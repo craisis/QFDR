@@ -1,0 +1,17 @@
+{
+	"contest-type": "field-day",
+	"title": "BARC Jr. Field Day 2011",
+	"contest-start": "2011-06-25T18:00:00Z",
+	"contest-end": "2011-06-26T18:00:00Z",
+	"my-info":{
+		"category": "4A",
+		"call-sign": "K0DE",
+		"section": "CO",
+		"notes":[
+			{"Welcome Message": "Welcome to Field Day 2011!"}
+		]
+	},
+	"notes":[
+		{"description": "Barc Jr. 2011 field day"}
+	]
+}

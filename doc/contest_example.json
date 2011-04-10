@@ -1,5 +1,6 @@
 // Contest example definition json file
 {
+	"ID": "field-day",
 	"name": "Field Day",
 	"exchange-fields":[
 		{
@@ -44,7 +45,11 @@
 	"autofill-fields": [
 		"category",
 		"section"
-	]
+	],
+	"require-unique":[
+		"band",
+		"mode"
+	],
 	"bands": [
 		"HF",
 		"-60m",

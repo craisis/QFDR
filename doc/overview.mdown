@@ -2,7 +2,7 @@
 ## Logging
 node.js
 ### Contact Storage
-Flat file
+- Flat file
 - contest configuration in json
 
 ### RESTful (json?)

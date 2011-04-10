@@ -1,11 +1,13 @@
 # Contest
 - defined by a json file
+- see contest_example.json
 
 # Logbook
 - Of type contest
 - has many transactions
 - newline delimited JSON
 - first line meta-data
+	- See logbook\_meta\_example.json
 
 # Transactions
 - see transaction_example.json
