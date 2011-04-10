@@ -1,0 +1,31 @@
+# Server-side
+## Logging
+node.js
+### Contact Storage
+Flat file
+- contest configuration in json
+
+### RESTful (json?)
+- faye
+
+## SDR
+- DttSP
+- USB-softrock
+- jack
+
+# Client-side
+## Logging
+### DB-cache
+- Hash in JS
+
+### hamlib
+## SDR
+- SDR Shell (temp)
+- jack
+
+### UDP
+
+
+## UI
+- webkit+gtk
+	- extjs
