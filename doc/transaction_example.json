@@ -1,0 +1,33 @@
+// Example file for a field-day contest client submitted json file
+{
+	"ID": "<SHA1>",
+	"root-ID": "<SHA1>",
+	"origin-ID": "<UUID>",
+	"data": {
+		"people": {
+			"operator": {
+				"name": "Hargobind Khalsa",
+				"call-sign": "AB0YL"
+			},
+			"logger": {
+				"name": "David Sterns",
+				"call-sign": "KC0DDR"
+			}
+		},
+		"contact":{
+			"band": "20m",
+			"mode": "CW", 
+			"frequency": 14000000,
+			"timestamp": "2011-06-22T00:00:00Z",
+			"call-sign": "N0VM",
+			"category": "10A",
+			"section": "CO",
+			"notes": "599"
+		}
+	},
+	"replaces": [
+		"<SHA1>"
+	],
+	"notes": "New Entry",
+	"timestamp": "2011-04-09T00:00:00Z"
+}

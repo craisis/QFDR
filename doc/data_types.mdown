@@ -1,0 +1,11 @@
+# Contest
+- defined by a json file
+
+# Logbook
+- Of type contest
+- has many transactions
+- newline delimited JSON
+- first line meta-data
+
+# Transactions
+- see transaction_example.json

@@ -1,0 +1,64 @@
+// Contest example definition json file
+{
+	"name": "Field Day",
+	"exchange-fields":[
+		{
+			"ID": "call-sign",
+			"label": "Call Sign",
+			"type": "String",
+			"format": "\s+",
+			"flags": [
+				"required",
+				"upper-case"
+			]
+			
+		},
+		{
+			"ID": "category",
+			"label": "Category",
+			"type": "String",
+			"format": "\d+[A-F]",
+			"flags": [
+				"required",
+				"upper-case"
+			]
+		},
+		{
+			"ID": "section",
+			"label": "Section",
+			"type": "Combo-Box",
+			"data-file": "ARRL-sections.json",
+			"flags": [
+				"required",
+				"auto-complete",
+				"fixed-set"
+			]
+		},
+	],
+	"primary-field": "call-sign",
+	"duplicate-fields": [
+		"call-sign",
+		"band",
+		"mode"
+	],
+	"autofill-fields": [
+		"category",
+		"section"
+	]
+	"bands": [
+		"HF",
+		"-60m",
+		"-30m",
+		"-17m",
+		"-12m",
+		"VHF",
+		"UHF",
+		"SHF",
+		"EHF"
+	],
+	"modes":[
+		"voice",
+		"CW",
+		"digital"
+	]
+}
