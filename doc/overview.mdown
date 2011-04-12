@@ -13,6 +13,19 @@ node.js
 - USB-softrock
 - jack
 
+## Program flow (Server JS)
+### Logbook list request
+- Return list of logbooks 
+
+### Logbook request
+- Return logbook+contest
+
+### Transaction submission via faye sub URL
+- Save submission to a local log file
+- publish submission via faye pub URL
+
+
+
 # Client-side
 ## Logging
 ### DB-cache
@@ -29,3 +42,32 @@ node.js
 ## UI
 - webkit+gtk
 	- extjs
+	
+	
+	
+## Program flow (Client JS)
+- Open Client (either via web browser or program)
+	- Client requests from server list of logbooks from server, pick one or specify new
+	- Client requests from server the existing logbook (assuming opening an already existing logbook)
+		- Client reads in logbook and associated contest's json config files (supplied by server as part of logbook data (single json response?))
+		- Client populates contacts and operators hashes (transaction hash? Save local file copy?)
+	- Client show logging window 
+		- local
+			- Operator (Auto-Complete text input on Name or Callsign, new entry causes a "new operator" popup?)
+			- Logger (See note on Operator)
+		- radio (some data will auto-populate and lock if using client program with hamlib, other behavior with SDR?)
+			- Band
+			- Mode
+		- exchange
+			- Read from exchange-fields in contest config, generating the needed fields and filling in the appropriate auto-complete and auto-fill as well as regex options.
+		- log of past contacts, live updated?
+	- Client submits data via faye sub URL to server and adds to contacts hash.
+		- If connection to server is unavailable queue submissions until contact is reestablished
+		
+	- On interrupt client will read from faye pub URL, validate new transaction is not a conflict, and enter into transaction hash
+		- If transaction is a conflict but the origin-ID matches us, discard.
+		
+	- On change of any fields in require-unique contest config verify that no other station has that reservation and submit a reservation publication via faye.
+	
+	
+		
