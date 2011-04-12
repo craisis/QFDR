@@ -23,6 +23,10 @@
 			"category": "10A",
 			"section": "CO",
 			"notes": "599"
+		},
+		"reservation":{
+			"band": "20m",
+			"mode": "CW"
 		}
 	},
 	"replaces": [
