@@ -1,0 +1,13 @@
+{
+  "name": "qfdr",
+  "version": "0.0.0",
+  "engines": {"node": "~0.4.6"},
+  "dependencies": {
+    "express": "~2.2.2",
+    "socket.io": "~0.6.17",
+    "underscore": "~1.1.6"
+  },
+  "devDependencies": {
+    "vows": "~0.5.8"
+  }
+}
