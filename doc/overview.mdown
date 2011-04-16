@@ -24,7 +24,41 @@ node.js
 - Save submission to a local log file
 - publish submission via faye pub URL
 
-
+### Overview
+- Start node.js server
+	- contests
+		- bind to URL for index
+		- bind to URL for show
+	- logbook
+		- bind to URL for index
+		- bind to URL for show
+		- bind to URL for add
+		- bind to URL for edit
+		- bind to URL for destroy
+- Start socket.io
+	- bind to connect/disconnect/etc. actions
+		- Connect 
+			- register client in reservation hash
+			- Register message action
+				- transaction
+					- validate (not in initial release, performed on client)
+					- log and broadcast to other's of that logbook
+					
+				- reservation
+					- request
+					    - check if avail.
+					    	- yes
+					    		- respond allowed
+					    		- unlock existing reservation
+					    		- record as "hard-lock"
+					    		- broadcast
+					    	- no
+								- respond denied
+					- release
+						- unlock reservation
+			- Register client disconnect
+				- move client's reservation to "soft-lock"
+				
 
 # Client-side
 ## Logging
@@ -70,4 +104,11 @@ node.js
 	- On change of any fields in require-unique contest config verify that no other station has that reservation and submit a reservation publication via faye.
 	
 	
-		
+# Change from faye to socket.io
+Using socket.io instead of faye allows for server to keep track of client reservations when client apps close, allowing for more reliable reservations.
+
+This means reservations would not be a json transaction, but instead a separate communication.
+
+- On client exit, client should release it's reservation (change to unlock).
+- If client hard exits (kill -9) server changes reservation to a soft-lock
+- on client reservation, a hard-lock is acquired.
