@@ -1,0 +1,36 @@
+{
+  "id": "ArrlFieldDay",
+  "name": "ARRL Field Day",
+  "exchangeFields": [{
+    "label": "Call Sign",
+    "type": "Text",
+    "behaviors": {
+      "required": true,
+      "uppercase": true,
+      "format": "[A-Z0-9]+"
+    }
+  }, {
+    "label": "Category",
+    "type": "Text",
+    "behaviors": {
+      "required": true,
+      "uppercase": true,
+      "format": "\d+[A-F]"
+    }
+  }, {
+    "label": "Section",
+    "type": "ComboBox",
+    "data": "sections.json",
+    "behaviors": {
+      "required": true,
+      "uppercase": true
+    }
+  }],
+  "behaviors": {
+    "autofill": {"Call Sign": ["Category", "Section"]},
+    "bandLimits": {"exclude": ["60m", "30m", "17m", "12m"]},
+    "radioModes": ["Voice", "CW", "Digital"],
+    "dupeCheck": ["Call Sign", "Band", "Mode"],
+    "reservation": ["Band", "Mode"]
+  }
+}
