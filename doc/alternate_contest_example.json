@@ -1,5 +1,5 @@
 {
-  "id": "ArrlFieldDay",
+  "id": "ARRLFieldDay",
   "name": "ARRL Field Day",
   "exchangeFields": [{
     "label": "Call Sign",
@@ -20,7 +20,7 @@
   }, {
     "label": "Section",
     "type": "ComboBox",
-    "data": "sections.json",
+    "data": "sections",
     "behaviors": {
       "required": true,
       "uppercase": true
@@ -32,5 +32,8 @@
     "radioModes": ["Voice", "CW", "Digital"],
     "dupeCheck": ["Call Sign", "Band", "Mode"],
     "reservation": ["Band", "Mode"]
+  }
+  "data": {
+    "sections": "ARRLSections.json"
   }
 }
