@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title>QFDR</title>
+  <style>
+
+  * {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
+    font-family: sans-serif;
+  }
+
+  #toplevel {
+    height: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  #toolbar {
+    font-size: 13px;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    background: -webkit-gradient(linear, center top, center bottom, from(#ccc), to(#eee));
+    -webkit-box-shadow: 0 1px 3px #999;
+    text-shadow: 0 1px 1px #fff;
+    -webkit-user-select: none;
+    cursor: default;
+    border-bottom: solid 1px #aaa;
+  }
+
+  #toolbar .spacer {
+    -webkit-box-flex: 1;
+    cursor: default;
+  }
+  
+  #toolbar .spacer:hover {
+    background: none;
+  }
+
+  #toolbar > span {
+    display: block;
+    padding: 3px 6px;
+    line-height: 19px;
+    cursor: pointer;
+  }
+  
+  #toolbar > span:hover {
+    background: rgba(0,0,0,0.25);
+  }
+
+  #wrap {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-flex: 1;
+  }
+  
+  #waterfall-panel {
+    padding: 6px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    background: #bcd;
+  }
+  
+  #frequency {
+    background: -webkit-gradient(linear, center top, center bottom, from(#ff9), to(#ff3));
+    padding: 6px;
+    margin: 6px;
+    -webkit-border-radius: 6px;
+    -webkit-box-shadow: 0 1px 3px #aaa;
+  }
+  
+  #frequency input {
+    display: block;
+    font-size: 18px;
+    width: 180px;
+/*    -webkit-appearance: none;*/
+    border: none;
+    background: none;
+    font-family: monospace;
+    text-align: center;
+    text-shadow: 0 1px 2px #fff;
+  }
+  
+  #content {
+    -webkit-box-flex: 1;
+    border-left: solid 1px #666;
+    border-right: solid 1px #666;
+    background: #fffff9;
+  }
+  
+  #log-entry {
+    overflow-y: scroll;
+    padding: 12px;
+    background: #bcd;
+  }
+  
+  #log-entry form {
+    padding: 6px;
+/*    background: -webkit-gradient(linear, center top, center bottom, from(#9f9), to(#3f3));*/
+    -webkit-border-radius: 6px;
+    text-shadow: 0 1px 1px #fff;
+/*    -webkit-box-shadow: 0 1px 3px #aaa;*/
+  }
+
+  #log-entry fieldset {
+    padding: 6px;
+    margin-bottom: 6px;
+    border: solid 1px #eee;
+/*    -webkit-box-shadow: 0 0 3px #fff;*/
+  }
+
+  #log-entry label {
+    display: block;
+    margin-bottom: 3px;
+  }
+  
+  #log-entry label span {
+    display: inline-block;
+    width: 72px;
+  }
+  
+  #log-entry button {
+    padding: 3px 6px;
+    margin: 3px;
+    border: none;
+    background: -webkit-gradient(linear, center top, center bottom, from(#ccc), to(#999));
+    -webkit-border-radius: 6px;
+    text-shadow: 0 1px 1px #fff;
+    -webkit-box-shadow: 0 1px 3px #666;
+  }
+  
+  #log-entry button:active {
+    background: -webkit-gradient(linear, center top, center bottom, from(#999), to(#666));
+    -webkit-box-shadow: 0 0 3px #aaa;
+  }
+  
+  #log-entry input {
+    border: solid 1px #aaa;
+    background: #fff;
+    padding: 2px;
+    -webkit-border-radius: 3px;
+  }
+  
+  #log-entry input:focus {
+    outline: none;
+    background: #ffc;
+  }
+  
+  #tx-indicator {
+    padding: 6px 0;
+    margin: 6px;
+    background: #d33;
+    background: -webkit-gradient(linear, center top, center bottom, from(#d44), to(#d11));
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 1px 3px #000;
+    -webkit-border-radius: 6px;
+    -webkit-box-shadow: 0 1px 3px #aaa;
+  }
+  
+  #waterfall-panel:hover #tx-indicator {
+    display: none;
+  }
+  
+  #waterfall {
+    background: #333;
+    -webkit-box-flex: 1;
+    margin: 6px;
+    -webkit-border-radius: 6px;
+    -webkit-box-shadow: 0 1px 3px #aaa;
+  }
+
+  </style>
+</head>
+<body>
+  <div id="toplevel">
+    <div id="toolbar">
+      <!-- <span title="Receive" style="color: #900; font-weight: bold;">Rx</span> -->
+      <span title="20 meters - Voice">20m - SSB</span>
+      <span title="Upper Side Band">USB</span>
+      <span title="1.8KHz Filter">1.8KHz</span>
+      <span title="AGC Fast">AGC - F</span>
+      <span title="Noise Reduction On"><span style="color:#090;">&#x2713;</span>NR</span>
+      <span title="Noise Blanker On"><span style="color:#090;">&#x2713;</span>NB</span>
+      <span title="Notch Filter Off"><span style="color:#900;">&#x2717;</span>NF</span>
+      <span title="Reset"><a href="#">Reset</a></span>
+      <span class="spacer"></span>
+      <span><a href="#">History</a></span>
+      <span><a href="#">Preferences</a></span>
+      <span><a href="#">Sign Out</a></span>
+    </div>
+    <div id="wrap">
+      <div id="waterfall-panel">
+        <div id="frequency">
+          <input value="14.350,417 MHz">
+        </div>
+        <div id="tx-indicator">
+          <center>ON AIR</center>
+        </div>
+        <div id="waterfall">
+        </div>
+      </div>
+      <div id="content">
+      </div>
+      <div id="log-entry">
+        <form>
+          <fieldset>
+            <legend>Exchange</legend>
+            <label><span>Call Sign</span><input placeholder="eg. KC0DDR"></label>
+            <label><span>Category</span><input placeholder="eg. 3A"></label>
+            <label><span>Section</span><input placeholder="eg. CO"></label>
+          </fieldset>
+          <fieldset>
+            <legend>People</legend>
+            <label><span>Operator</span><input></label>
+            <label><span>Logger</span><input></label>
+          </fieldset>
+          <fieldset>
+            <legend>Other</legend>
+            <label><span>Band</span><select>
+              <option>160 meters</option>
+            </select></label>
+            <label><span>Mode</span><select>
+              <option>Voice</option>
+            </select></label>
+            <label><span>Frequency</span><input></label>
+            <label><span>Time</span><input></label>
+          </fieldset>
+          <div class="button-box">
+            <button>Clear</button>
+            <button>Log</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+  
+  </script>
+</body>
+</html>

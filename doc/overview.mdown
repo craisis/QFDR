@@ -38,7 +38,6 @@ node.js
 - Start socket.io
 	- bind to connect/disconnect/etc. actions
 		- Connect 
-			- register client in reservation hash
 			- Register message action
 				- transaction
 					- validate (not in initial release, performed on client)
@@ -84,8 +83,9 @@ node.js
 	- Client requests from server list of logbooks from server, pick one or specify new
 	- Client requests from server the existing logbook (assuming opening an already existing logbook)
 		- Client reads in logbook and associated contest's json config files (supplied by server as part of logbook data (single json response?))
+			- Call correct behavior code for contest that registers their own callbacks.
 		- Client populates contacts and operators hashes (transaction hash? Save local file copy?)
-	- Client show logging window 
+	- Client show logging window (see html_mockup.html)
 		- local
 			- Operator (Auto-Complete text input on Name or Callsign, new entry causes a "new operator" popup?)
 			- Logger (See note on Operator)
@@ -93,15 +93,16 @@ node.js
 			- Band
 			- Mode
 		- exchange
-			- Read from exchange-fields in contest config, generating the needed fields and filling in the appropriate auto-complete and auto-fill as well as regex options.
-		- log of past contacts, live updated?
-	- Client submits data via faye sub URL to server and adds to contacts hash.
+			- Read from exchange-fields in contest config, generating the needed fields.
+			- call/register behaviors (callbacks, validations, etc.)
+		- log of past contacts, live updated
+		
+	- Client submits data via SocketIO to server.
 		- If connection to server is unavailable queue submissions until contact is reestablished
 		
-	- On interrupt client will read from faye pub URL, validate new transaction is not a conflict, and enter into transaction hash
-		- If transaction is a conflict but the origin-ID matches us, discard.
-		
-	- On change of any fields in require-unique contest config verify that no other station has that reservation and submit a reservation publication via faye.
+	- On interrupt client will read from SocketIO, validate new transaction is not a conflict, and enter into transaction hash
+	
+	
 	
 	
 # Change from faye to socket.io
